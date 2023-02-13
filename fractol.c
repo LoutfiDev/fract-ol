@@ -6,13 +6,15 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:20 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/13 15:08:56 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:26:23 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main (char **av, int ac)
+int main (int ac, char **av)
 {
+	check_args(ac, av);
+	// render(ac, av);
 	return (0);
 }
