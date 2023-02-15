@@ -6,13 +6,15 @@
 #    By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 15:02:00 by yloutfi           #+#    #+#              #
-#    Updated: 2023/02/13 16:27:00 by yloutfi          ###   ########.fr        #
+#    Updated: 2023/02/14 11:43:51 by yloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = fractol.c parser.c helpers.c
+SRCS = fractol.c parser.c helpers.c get_next_line.c	\
+	get_next_line_utils.c
 
-OBJS = fractol.o parser.o helpers.o
+OBJS = fractol.o parser.o helpers.o get_next_line.o	\
+	get_next_line_utils.o
 
 NAME = fractol
 CFLAGS = -Wall -Wextra -Werror 

@@ -1,0 +1,20 @@
+-- Here is a guide to use Fractol --
+
+- Format :
+  ./fractol [TYPE] [MAX_ITERATION] [REAL] [IMAGINARY]
+
+- Types :
+  ./fractol Mandelbrot
+    = ./fractol M
+  ./fractol Julia
+    = ./fractol J
+
+- Exemples :
+  ./fractol M
+  ./fractol J 250
+  ./fractol J 250 -0.2 0.752
+
+- Inputs :
+  scroll up/down  => zoom in/out
+  Arrow_keys/WASD => move up/left/down/right
+-------------------------------------------------------

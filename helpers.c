@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:00:40 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/13 16:48:07 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/02/14 10:08:20 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,23 @@ int	ft_isdigit(char *str)
 {
 	int	i;
 	int	dot;
+	int	sign;
 
-	if (str[0] < 48 && str[0] > 57)
-		return (0);
-	i = 1;
 	dot = 0;
+	sign = 0;
+	i = 1;
+	if (str[0] == '-' || str[0] == '+')
+		sign++;
+	if ((str[0] < 48 || str[0] > 57) && !sign)
+		return (0);
 	while (str[i])
 	{
-		if (str[i++] == 46)
+		if (str[i] == 46)
+		{
 			dot++;
-		if ((str[i] < 48 && str[i] > 57) || dot > 1)
+			i++;
+		}
+		if (str[i] < 48 || str[i] > 57 || dot > 1)
 			return (0);
 		i++;
 	}
