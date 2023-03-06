@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:00:40 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/14 10:08:20 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/02/23 10:59:43 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ long long	ft_atoi(char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	while ((str[i] && str[i] >= '0' && str[i] <= '9'))
 	{
 		res *= 10;
 		res += str[i] - '0';

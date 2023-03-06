@@ -18,6 +18,7 @@ void print_msg()
 	int		fd;
 
 	fd = open("fractol_usage.txt", O_RDONLY);
+	perror("Error");
 	write(1, RED, ft_strlen(RED));
 	while (1)
 	{
@@ -38,6 +39,8 @@ int check_type(char *str)
 	if (ft_strncmp(str, "Mandelbrot", ft_strlen("Mandelbrot")) == 0)
 		return (1);
 	else if (ft_strncmp(str, "Julia", ft_strlen("Julia")) == 0)
+		return (1);
+	else if (ft_strncmp(str, "M", 1) == 0 || ft_strncmp(str, "J", 1) == 0)
 		return (1);
 	return (0);
 }

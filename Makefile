@@ -6,24 +6,25 @@
 #    By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 15:02:00 by yloutfi           #+#    #+#              #
-#    Updated: 2023/02/14 11:43:51 by yloutfi          ###   ########.fr        #
+#    Updated: 2023/03/06 09:54:45 by yloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = fractol.c parser.c helpers.c get_next_line.c	\
-	get_next_line_utils.c
-
-OBJS = fractol.o parser.o helpers.o get_next_line.o	\
-	get_next_line_utils.o
-
 NAME = fractol
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+MLX = -lmlx -framework OpenGL -framework AppKit
+MATH = -lm
 CC = cc
+
+SRCS = fractol.c parser.c helpers.c get_next_line.c	\
+	get_next_line_utils.c ft_fatoi.c draw.c suites.c
+
+OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 	
 $(NAME) : $(OBJS)
-	$(CC) -g $(CFLAGS) $(OBJS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(MLX) $(MATH) $(OBJS) -o $(NAME) 
 
 clean :
 	-rm -f $(OBJS)
