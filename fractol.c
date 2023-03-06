@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:20 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/06 09:58:29 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/06 11:47:39 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
-	draw(&data->img, &data->fractal, &data->plan);
+	draw(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img.img_ptr, 0, 0);
-	// mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	return (0);
 }
 
@@ -36,7 +35,7 @@ int	_reset(t_data *data)
 	data->plan.y_min = -2;
 	data->plan.x_max = 2;
 	data->plan.y_max = 2;
-	data->fractal.palette = 0;
+	data->fractal.color_shift = 0;
 	data->fractal.member.x = 0;
 	data->fractal.member.y = 0;
 	return (0);
@@ -56,10 +55,8 @@ int	handle_key_event(int key, t_data *data)
 		data->fractal.member.y += HEIGHT / 20;
 	if(key == 123 || key == 0)
 		data->fractal.member.x -= WIDTH / 20;
-	if (key == 12 && data->fractal.palette > 0)
-		data->fractal.palette--;
-	if (key == 14 && data->fractal.palette < 2)
-		data->fractal.palette++;
+	if (key == 8)
+		data->fractal.color_shift = (data->fractal.color_shift + 1) % 3;
 	if (key == 24)
 		data->fractal.max_iteration++;
 	if (key == 27 && data->fractal.max_iteration > 0)
@@ -133,7 +130,7 @@ int	_init(t_data *data, char **av, int ac)
 	data->plan.y_min = -2;
 	data->plan.x_max = 2;
 	data->plan.y_max = 2;
-	data->fractal.palette = 0;
+	data->fractal.color_shift = 0;
 	data->fractal.member.x = 0;
 	data->fractal.member.y = 0;
 	return (0);

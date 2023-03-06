@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:35 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/06 09:59:49 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/06 11:42:10 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 # define CYAN "\033[1;36m"
 
 //Define structs
+
+typedef	struct		s_color
+{
+	int8_t			channel[4];
+}	t_color;	
 typedef struct s_member
 {
 	float	x;
@@ -64,7 +69,7 @@ typedef struct s_fractal
 	int			max_iteration;
 	float		real;
 	float		imaginary;
-	int			palette;
+	int			color_shift;
 	t_member	member;
 }	t_fractal;
 
@@ -103,11 +108,11 @@ char		*ft_substr(char *str, int start, int len);
 void		check_args(int ac, char **av);
 
 //drawing function
-void		draw(t_img *img, t_fractal *fractal, t_plan *plan);
+void		draw(t_data *data);
 int			mandelbrot_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
 int			julia_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
 int			mandelbar_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
-int			get_color(t_fractal *fractal, int color);
-void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+t_color		get_color(int iteration, t_fractal *fractol);
+void		put_pixel(t_data *data, int x, int y, t_color color);
 
 #endif
