@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:50:32 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/06 10:40:03 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:45:32 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ float	module(float x, float y)
 
 int	julia_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 {
-	t_member 	mem;
-	t_member 	tmp;
+	t_member	mem;
+	t_member	tmp;
 	int			i;
 
 	mem.x = ((pos->x / WIDTH) * (plan_c->x_max
-			- plan_c->x_min)) + plan_c->x_min;	
+				- plan_c->x_min)) + plan_c->x_min;
 	mem.y = (((pos->y * -1) / HEIGHT) * (plan_c->y_max
-			- plan_c->y_min)) + plan_c->y_max;
+				- plan_c->y_min)) + plan_c->y_max;
 	i = 0;
 	while (module(mem.x, mem.y) < 4 && i < fractal->max_iteration)
 	{
@@ -43,15 +43,15 @@ int	julia_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 
 int	mandelbar_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 {
-	t_member 	mem;
-	t_member 	tmp;
+	t_member	mem;
+	t_member	tmp;
 	t_member	c;
 	int			i;
 
 	c.x = ((pos->x / WIDTH) * (plan_c->x_max
-			- plan_c->x_min)) + plan_c->x_min;	
+				- plan_c->x_min)) + plan_c->x_min;
 	c.y = (((pos->y * -1) / HEIGHT) * (plan_c->y_max
-			- plan_c->y_min)) + plan_c->y_max;
+				- plan_c->y_min)) + plan_c->y_max;
 	i = 0;
 	mem.x = 0;
 	mem.y = 0;
@@ -70,15 +70,15 @@ int	mandelbar_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 
 int	mandelbrot_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 {
-	t_member 	mem;
-	t_member 	tmp;
+	t_member	mem;
+	t_member	tmp;
 	t_member	c;
 	int			i;
 
 	c.x = ((pos->x / WIDTH) * (plan_c->x_max
-			- plan_c->x_min)) + plan_c->x_min;	
+				- plan_c->x_min)) + plan_c->x_min;
 	c.y = (((pos->y * -1) / HEIGHT) * (plan_c->y_max
-			- plan_c->y_min)) + plan_c->y_max;
+				- plan_c->y_min)) + plan_c->y_max;
 	i = 0;
 	mem.x = 0;
 	mem.y = 0;
@@ -94,4 +94,3 @@ int	mandelbrot_set(t_member *pos, t_fractal *fractal, t_plan *plan_c)
 		return (0);
 	return (i);
 }
-

@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:59:57 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/23 18:29:00 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:42:29 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	_index(char *str)
 	return (i);
 }
 
-void _add(char *str, int *i, float *nbr)
+void	_add(char *str, int *i, float *nbr)
 {
 	*nbr *= 10;
 	*nbr += str[*i] - '0';
 	*i += 1;
-} 
+}
 
 float	ft_fatoi(char *str)
 {
@@ -63,7 +63,7 @@ float	ft_fatoi(char *str)
 	int		sign;
 	float	res;
 	float	tmp;
-	int 	dot_index;
+	int		dot_index;
 
 	i = ft_spacex(str);
 	sign = ft_sign(str, &i);

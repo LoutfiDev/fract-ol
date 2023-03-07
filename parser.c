@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void print_msg()
+void	print_msg(void)
 {
 	char	*line;
 	int		fd;
@@ -24,8 +24,8 @@ void print_msg()
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
-		write(1, line, ft_strlen(line));			
+			break ;
+		write(1, line, ft_strlen(line));
 	}
 	write(1, WHITE, ft_strlen(WHITE));
 	close(fd);
@@ -34,13 +34,13 @@ void print_msg()
 	return ;
 }
 
-int check_type(char *str)
+int	check_type(char *str)
 {
-	if (ft_strncmp(str, "Mandelbrot", ft_strlen("Mandelbrot")) == 0)
+	if (ft_strncmp(str, "m", 2) == 0)
 		return (1);
-	else if (ft_strncmp(str, "Julia", ft_strlen("Julia")) == 0)
+	else if (ft_strncmp(str, "j", 2) == 0)
 		return (1);
-	else if (ft_strncmp(str, "M", 1) == 0 || ft_strncmp(str, "J", 1) == 0)
+	else if (ft_strncmp(str, "ma", 3) == 0)
 		return (1);
 	return (0);
 }

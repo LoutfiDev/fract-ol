@@ -1,3 +1,4 @@
+
 -- Here is a guide to use Fractol --
 
 - Format :
@@ -8,13 +9,18 @@
     = ./fractol M
   ./fractol Julia
     = ./fractol J
+  ./fractol Mandelbar
+    = ./fractol Ma
 
 - Exemples :
   ./fractol M
+  ./fractol Ma 120
   ./fractol J 250
   ./fractol J 250 -0.2 0.752
 
 - Inputs :
   scroll up/down  => zoom in/out
   Arrow_keys/WASD => move up/left/down/right
+  key[c]          => to shift colors
+  keys[+/-]       => to adjust iterations
 -------------------------------------------------------

@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:35 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/06 11:42:10 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:41:36 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@
 # define CYAN "\033[1;36m"
 
 //Define structs
-
-typedef	struct		s_color
+typedef struct s_color
 {
-	int8_t			channel[4];
-}	t_color;	
+	int8_t	channel[4];
+}	t_color;
+
 typedef struct s_member
 {
 	float	x;
@@ -63,16 +63,6 @@ typedef struct s_img
 	int			endian;
 }	t_img;
 
-typedef struct s_fractal
-{
-	char		*type;
-	int			max_iteration;
-	float		real;
-	float		imaginary;
-	int			color_shift;
-	t_member	member;
-}	t_fractal;
-
 typedef struct s_plan
 {
 	float	x_min;
@@ -81,21 +71,29 @@ typedef struct s_plan
 	float	y_max;
 }	t_plan;
 
-typedef struct s_data
+typedef struct s_fractal
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	t_img		img;
-	t_fractal	fractal;
-	t_plan		plan;
-}	t_data;
+	t_img		*img;
+	t_plan		*plan;
+	char		*type;
+	int			max_iteration;
+	float		real;
+	float		imaginary;
+	int			color_shift;
+	int			julia_motion;
+	t_member	member;
+}	t_fractal;
 
 //Libft_functions 
 int			ft_strlen(char *str);
 int			ft_isdigit(char *str);
-int			ft_strncmp(const char *s1, const char *s2, int n);
+int			ft_strncmp(char *s1, const char *s2, int n);
 long long	ft_atoi(char *str);
 float		ft_fatoi(char *str);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t count, size_t size);
 
 //get_next_line function
 char		*get_next_line(int fd);
@@ -107,12 +105,24 @@ char		*ft_substr(char *str, int start, int len);
 //parsing_functions
 void		check_args(int ac, char **av);
 
+//initialize functions
+int			set_default(t_fractal *fractal, char **av, int ac);
+t_img		*init_img(void *mlx_ptr);
+t_plan		*init_plan(void);
+
 //drawing function
-void		draw(t_data *data);
+void		draw(t_fractal *fractal);
 int			mandelbrot_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
 int			julia_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
 int			mandelbar_set(t_member *pos, t_fractal *fractal, t_plan *plan_c);
 t_color		get_color(int iteration, t_fractal *fractol);
-void		put_pixel(t_data *data, int x, int y, t_color color);
+void		put_pixel(t_fractal *fractal, int x, int y, t_color color);
+
+//Events functions
+int			render(t_fractal *fractal);
+int			handle_mouse_event(int key, int x, int y, t_fractal *fratal);
+int			handle_key_event(int key, t_fractal *fractal);
+int			_julia_motion(int x, int y, t_fractal *fratal);
+int			destroy_window(t_fractal *fractal);
 
 #endif

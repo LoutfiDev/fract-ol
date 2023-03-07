@@ -6,13 +6,13 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 09:27:58 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/14 15:39:02 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:45:02 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 	char	*str;
@@ -26,7 +26,7 @@ static void	ft_bzero(void *s, size_t n)
 	}
 }
 
-static void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 	size_t	lenght;
@@ -73,7 +73,7 @@ static char	*ft_read(int fd, char *store)
 	buff = ft_calloc((BUFFER_SIZE + 1), 1);
 	if (!buff)
 		return (NULL);
-	bytes_read = 1;	
+	bytes_read = 1;
 	while (bytes_read && !ft_memchr(buff, '\n', BUFFER_SIZE))
 	{
 		bytes_read = read(fd, buff, BUFFER_SIZE);

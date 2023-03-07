@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:00:40 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/02/23 10:59:43 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:42:05 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,17 @@ int	ft_isdigit(char *str)
 	return (1);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	ft_strncmp(char *s1, const char *s2, int n)
 {	
 	int	i;
 
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] >= 'A' && s1[i] <= 'Z')
+			s1[i] += 32;
+		i++;
+	}
 	i = 0;
 	while (i < n && (s1[i] || s2[i]))
 	{
