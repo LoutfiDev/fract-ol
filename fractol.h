@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:35 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/07 13:41:36 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 15:47:50 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define WIDTH 960
 # define HEIGHT 900
 # define MLX_ERROR 1
-# define MAX_ITER 50
+# define MAX_ITER 25
 
 //BUFFER_SIZE used to read buffer from stdin
 # ifndef BUFFER_SIZE
@@ -106,7 +106,7 @@ char		*ft_substr(char *str, int start, int len);
 void		check_args(int ac, char **av);
 
 //initialize functions
-int			set_default(t_fractal *fractal, char **av, int ac);
+t_fractal	*set_default(char **av, int ac);
 t_img		*init_img(void *mlx_ptr);
 t_plan		*init_plan(void);
 
@@ -123,6 +123,7 @@ int			render(t_fractal *fractal);
 int			handle_mouse_event(int key, int x, int y, t_fractal *fratal);
 int			handle_key_event(int key, t_fractal *fractal);
 int			_julia_motion(int x, int y, t_fractal *fratal);
+void		_reset(t_fractal *fractal);
 int			destroy_window(t_fractal *fractal);
 
 #endif

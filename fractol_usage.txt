@@ -21,6 +21,8 @@
 - Inputs :
   scroll up/down  => zoom in/out
   Arrow_keys/WASD => move up/left/down/right
-  key[c]          => to shift colors
-  keys[+/-]       => to adjust iterations
+  key[C]          => shift colors
+  key[R]          => reset fractal
+  key[ESC]        => close window
+  keys[+/-]       => adjust iterations
 -------------------------------------------------------

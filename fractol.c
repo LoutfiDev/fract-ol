@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:00:20 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/07 13:36:37 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:03:03 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	destroy_window(t_fractal *fractal)
 
 int	render(t_fractal *fractal)
 {
-	if (fractal->win_ptr == NULL)
-		return (MLX_ERROR);
 	draw(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->win_ptr,
 		fractal->img->img_ptr, 0, 0);
@@ -37,17 +35,19 @@ int	main(int ac, char **av)
 	t_fractal	*fractal;
 
 	check_args(ac, av);
-	fractal = (t_fractal *)ft_calloc(1, sizeof(t_fractal));
+	fractal = set_default(av, ac);
 	if (!fractal)
 		return (MLX_ERROR);
 	fractal->mlx_ptr = mlx_init();
 	if (!fractal->mlx_ptr)
 		return (MLX_ERROR);
-	fractal->win_ptr = mlx_new_window(fractal->mlx_ptr, WIDTH, HEIGHT, av[1]);
+	fractal->win_ptr = mlx_new_window(fractal->mlx_ptr,
+			WIDTH, HEIGHT, "Fract-ol");
 	if (!fractal->win_ptr)
 		return (MLX_ERROR);
-	set_default(fractal, av, ac);
 	fractal->img = init_img(fractal->mlx_ptr);
+	if (!fractal->img)
+		return (MLX_ERROR);
 	mlx_hook(fractal->win_ptr, 17, 0, destroy_window, fractal);
 	mlx_hook(fractal->win_ptr, 2, 0, handle_key_event, fractal);
 	mlx_hook(fractal->win_ptr, 4, 0, handle_mouse_event, fractal);

@@ -6,7 +6,7 @@
 /*   By: yloutfi <yloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:15:24 by yloutfi           #+#    #+#             */
-/*   Updated: 2023/03/07 13:45:16 by yloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:03:19 by yloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,36 @@ t_plan	*init_plan(void)
 	return (plan);
 }
 
-int	set_default(t_fractal *fractal, char **av, int ac)
+t_fractal	*set_default(char **av, int ac)
 {
-	if (av && ac > 0)
-	{
-		fractal->type = av[1];
-		fractal->max_iteration = MAX_ITER;
-		if (ac > 2)
-			fractal->max_iteration = ft_atoi(av[2]);
-		if (ac > 3)
-			fractal->real = ft_fatoi(av[3]);
-		if (ac > 4)
-			fractal->imaginary = ft_fatoi(av[4]);
-	}
+	t_fractal	*fractal;
+
+	fractal = (t_fractal *)ft_calloc(1, sizeof(t_fractal));
+	if (!fractal)
+		return (NULL);
+	fractal->type = av[1];
+	fractal->max_iteration = MAX_ITER;
+	if (ac > 2)
+		fractal->max_iteration = ft_atoi(av[2]);
+	if (ac > 3)
+		fractal->real = ft_fatoi(av[3]);
+	if (ac > 4)
+		fractal->imaginary = ft_fatoi(av[4]);
 	fractal->color_shift = 0;
 	fractal->julia_motion = 0;
 	fractal->member.x = 0;
 	fractal->member.y = 0;
 	fractal->plan = init_plan();
-	return (0);
+	return (fractal);
+}
+
+void	_reset(t_fractal *fractal)
+{
+	fractal->color_shift = 0;
+	fractal->julia_motion = 0;
+	fractal->member.x = 0;
+	fractal->member.y = 0;
+	free(fractal->plan);
+	fractal->plan = init_plan();
+	return ;
 }
